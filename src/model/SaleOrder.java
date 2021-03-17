@@ -12,24 +12,31 @@ public class SaleOrder {
 	
 	public SaleOrder(Customer customer) {
 		this.customer = customer;
+		totalPrice = 0;
 	}
-	public void addToTotal(int price, int quantity, double totalPrice) {
+	
+	public void addToTotal(int price, int quantity) {
 		if (price  > 0 && quantity > 0){
-		totalPrice = price * quantity;
+		totalPrice += (price * quantity);
 		} else {
 			System.out.println( "Please enter valid input ");
 		}
 	}
+	
 	public void setDeliveryStatus(String status) {
 		this.deliveryStatus = status;
 	}
+	
 	public void setDeliveryDate(Date date) {
 		this.deliveryDate = date;
 	}
+	
 	public String getDeliveryStatus() {
 		return this.deliveryStatus;
 	}
+	
 	public Date getDeliveryDate() {
 		return this.deliveryDate;
 	}
+	
 }

@@ -12,13 +12,16 @@ public class Invoice {
 		this.invoiceNo = invoiceNo;
 		this.paidAmount = paidAmount;
 		this.paymentDate = paymentDate;
-}
+	}
+	
 	public String getInvoiceNo() {
 		return this.invoiceNo;
 	}
+	
 	public double getPaidAmount() {
 		return this.paidAmount;
 	}
+	
 	public Date getPaymentDate() {
 		return this.paymentDate;
 	}

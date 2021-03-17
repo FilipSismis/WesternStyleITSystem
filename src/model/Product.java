@@ -14,16 +14,17 @@ public class Product {
         this.minStock = minStock;
         this.currentStock = currentStock;
     }
+    
     public void setCurrentStock(int newCurrentStock) {
     	this.currentStock = newCurrentStock;
     }
     
     public int getCurrentStock() {
-    return this.currentStock;
+    	return this.currentStock;
     }
+    
     public String getProductionId(){
         return this.productId;
     }
-
 
 }
