@@ -2,29 +2,39 @@ package model;
 
 public class Product {
 
-    private String productId;
+    private String productCode;
     private String name;
     private int minStock;
     private int currentStock;
     private Supplier supplier;
+    private int id;
 
-    public Product(String productId, String name, int minStock, int currentStock){
-        this.productId = productId;
+    public Product(String productCode, String name, int minStock, int currentStock, Supplier supplier){
+        this.productCode = productCode;
         this.name = name;
         this.minStock = minStock;
         this.currentStock = currentStock;
+        this.supplier = supplier;
     }
     
     public void setCurrentStock(int newCurrentStock) {
     	this.currentStock = newCurrentStock;
     }
     
+    public void setId(int id) {
+    	this.id = id;
+    }
+    
     public int getCurrentStock() {
     	return this.currentStock;
     }
     
-    public String getProductionId(){
-        return this.productId;
+    public String getProductCode(){
+        return this.productCode;
+    }
+    
+    public int getId() {
+    	return this.id;
     }
 
 }

@@ -1,14 +1,18 @@
 package control;
 
 import model.*;
-import java.util.Scanner;
+import java.sql.SQLException;
+import db.*;
 
 public class ControlCustomer {
-private DBCustomer dbcustomer;
 
-public void ControlProduct() {
-	public Customer findCustomerbyEmail(String customerEmail) {
-		return DBCustomer.getInstance().customer.get(customerEmail);
+	private DBCustomer dbCustomer;
+
+	public void ControlCustomer() {
+		dbCustomer = new DBCustomer();
 	}
-}
+	
+	public Customer findCustomerbyEmail(String customerEmail)throws SQLException {
+		return dbCustomer.findCustomerByEmail(customerEmail);
+	}
 }

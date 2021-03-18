@@ -9,6 +9,7 @@ public class Supplier {
 	private String zipcode;
 	private String city;
 	private String country;
+	private int id;
 	
 	public Supplier(String name, String phoneNo, String email, String address, String zipcode, String city, String country) {
 		this.name = name;
@@ -20,4 +21,7 @@ public class Supplier {
 		this.country = country;
 	}
 	
+	public void setId(int id) {
+		this.id = id;
+	}
 }
