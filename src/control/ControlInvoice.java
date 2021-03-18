@@ -1,12 +1,19 @@
 package control;
 
-import model.*;
+import model.Invoice;
+import db.DBInvoice;
+import java.sql.SQLException;
 
 public class ControlInvoice {
-private DBInvoice dbinvoice;
+private DBInvoice dbInvoice;
 
 	public ControlInvoice() {
-		 // public Invoice createInvoice(int InvoiceNo, double totalPrice, Date paymentDate);
-		
+		dbInvoice = new DBInvoice();
+	}
+	
+	public void createInvoice(String invoiceNo, double paidAmount)throws SQLException {
+		Invoice invoice;
+		invoice = new Invoice(invoiceNo, paidAmount);
+		dbInvoice.addInvoice(invoice);
 	}
 }

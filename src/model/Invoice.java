@@ -1,14 +1,19 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Invoice {
 	
 	private String invoiceNo;
-	private Date paymentDate;
+	private LocalDate paymentDate;
 	private double paidAmount;
 
-	public Invoice(String invoiceNo, double paidAmount, Date paymentDate) {
+	public Invoice(String invoiceNo, double paidAmount) {
+		this.invoiceNo = invoiceNo;
+		this.paidAmount = paidAmount;
+	}
+	
+	public Invoice(String invoiceNo, double paidAmount, LocalDate paymentDate) {
 		this.invoiceNo = invoiceNo;
 		this.paidAmount = paidAmount;
 		this.paymentDate = paymentDate;
@@ -22,7 +27,7 @@ public class Invoice {
 		return this.paidAmount;
 	}
 	
-	public Date getPaymentDate() {
+	public LocalDate getPaymentDate() {
 		return this.paymentDate;
 	}
 	

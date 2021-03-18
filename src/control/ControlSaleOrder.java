@@ -46,7 +46,7 @@ public class ControlSaleOrder {
 		}
 	}
 	
-	public void finishOrder()throws SQLException {
+	public void finishOrder(String invoiceNo)throws SQLException {
 		List<OrderLine> orderLineList = new ArrayList<>();
 		orderLineList = buildOrderLineList(dbOrderLine.findOrderLineBySaleOrderId(saleOrder.getId()));
 		for(int i = 0; i <= orderLineList.size()-1; i++) {
@@ -56,7 +56,7 @@ public class ControlSaleOrder {
 			saleOrder.addToTotal(price, quantity);
 		}
 		double totalPrice = saleOrder.getTotal();
-		//finish invoice 
+		controlInvoice.createInvoice(invoiceNo, totalPrice);
 	}
 	
 	private List<OrderLine> buildOrderLineList(ResultSet rs)throws SQLException {

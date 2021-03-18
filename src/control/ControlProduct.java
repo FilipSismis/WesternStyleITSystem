@@ -50,8 +50,5 @@ public class ControlProduct {
 		int currentStock = product.getCurrentStock();
 		return currentStock;
 	}
-	/*public String getProductId(Product product) {
 		
-	}*/
-	
 }
