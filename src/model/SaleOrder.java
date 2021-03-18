@@ -18,12 +18,8 @@ public class SaleOrder {
 		totalPrice = 0;
 	}
 	
-	public void addToTotal(int price, int quantity) {
-		if (price  > 0 && quantity > 0){
+	public void addToTotal(double price, int quantity) {
 		totalPrice += (price * quantity);
-		} else {
-			System.out.println( "Please enter valid input ");
-		}
 	}
 	
 	public void setId(int id) {
