@@ -2,13 +2,13 @@ package model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import model.CustomerType;
 
 public class SaleOrder {
 	private LocalDateTime saleDateTime;
 	private double totalPrice;
 	private String deliveryStatus;
 	private LocalDate deliveryDate;
-	private double discount;
 	private Customer customer;
 	private int id;
 	
@@ -55,6 +55,19 @@ public class SaleOrder {
 	}
 	public Customer getCustomer() {
 		return customer;
+	}
+	
+	//discount amount for clubs is hard coded for now for 10% 
+	public void checkDiscount() {
+		if(customer.getType() == CustomerType.PERSON) {
+			if(totalPrice < 2500) {
+				totalPrice += 45;
+			}
+		}else if(customer.getType() == CustomerType.CLUB){
+			if(totalPrice >= 1500) {
+				totalPrice *= 0.90; 
+			}
+		}
 	}
 	
 }

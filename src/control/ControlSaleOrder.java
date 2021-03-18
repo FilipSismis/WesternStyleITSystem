@@ -55,6 +55,7 @@ public class ControlSaleOrder {
 			double price = controlPrice.findPriceByProductId(orderLine.getProduct().getId());
 			saleOrder.addToTotal(price, quantity);
 		}
+		saleOrder.checkDiscount();
 		double totalPrice = saleOrder.getTotal();
 		controlInvoice.createInvoice(invoiceNo, totalPrice);
 	}
