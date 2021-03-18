@@ -11,8 +11,9 @@ public class Customer {
 	private String zipcode;
 	private String city;
 	private CustomerType type;
+	private int id;
 	
-	public Customer(String fName, String lName, String address, String phoneNo, String email, String zipcode, String city) {
+	public Customer(String fName, String lName, String address, String phoneNo, String email, String zipcode, String city, CustomerType type) {
 		this.fName = fName;
 		this.lName = lName;
 		this.address = address;
@@ -20,23 +21,20 @@ public class Customer {
 		this.email = email;
 		this.zipcode = zipcode;
 		this.city = city;
-		type = CustomerType.PERSON;
+		this.type = type;
 	}
 
-	public Customer(String fName, String address, String phoneNo, String email, String zipcode, String city) {
-		super();
-		this.fName = fName;
-		this.address = address;
-		this.phoneNo = phoneNo;
-		this.email = email;
-		this.zipcode = zipcode;
-		this.city = city;
-		type = CustomerType.CLUB;
-	}
 	
 	public CustomerType getType() {
 		return type;
 	}
 	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 }

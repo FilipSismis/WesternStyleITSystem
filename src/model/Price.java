@@ -1,12 +1,12 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Price {
 	
 	//fields for class Price
 	private double price;
-	private Date startDateTime;
+	private LocalDateTime startDateTime;
 	private PriceType type;
 	
 	public Price(double price, PriceType type) {
@@ -17,9 +17,9 @@ public class Price {
 	public double getPrice() {
 		return price;
 	}
-	
-	public void setStartDateTime(Date date) {
-		this.startDateTime = date;
+		
+	public PriceType getPriceType() {
+		return this.type;
 	}
 	
 }

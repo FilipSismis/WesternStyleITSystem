@@ -1,23 +1,54 @@
 package control;
 
 import model.*;
+import db.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class ControlProduct {
-private DBPrice dbprice;
-
-public ControlProduct() {
-	public Product findProductByProductId(String productId) {
-		return DBProduct.getInstance().product.get(productId);
+	
+	private DBProduct dbProduct;
+	private ControlSupplier controlSupplier;
+	
+	public ControlProduct() {
+		dbProduct = new DBProduct();
+		controlSupplier = new ControlSupplier();
 	}
-	// public int getProductCurrentStock() {
-		// String info = 
-    	// return this.currentStock;
-	// }
-	public void updateCurrentStock(String productId, int quantity) {
-		//
+	
+	private ResultSet findProductByProductCode(String productCode)throws SQLException {
+		ResultSet rsProduct = dbProduct.findProductByProductCode(productCode);
+		return rsProduct;
 	}
-	public String getProductId(Product product) {
-		return DBProduct.getInstance().product.get(Product);
+	
+	private ResultSet findProductByProductId(int productId)throws SQLException {
+		ResultSet rsProduct = dbProduct.findProductByProductId(productId);
+		return rsProduct;
 	}
-}
+	
+	public Product buildProductByProductCode(String productCode)throws SQLException{
+		Product product;
+		ResultSet rs = findProductByProductCode(productCode);
+		product = new Product(rs.getString("productCode"), rs.getString("pName"), rs.getInt("minStock"), rs.getInt("currentStock"), controlSupplier.findSupplierById(rs.getInt("supplierId")));
+		product.setId(rs.getInt("id"));
+		return product;		
+	}
+	
+	public Product buildProductByProductId(int productId)throws SQLException{
+		Product product;
+		ResultSet rs = findProductByProductId(productId);
+		product = new Product(rs.getString("productCode"), rs.getString("pName"), rs.getInt("minStock"), rs.getInt("currentStock"), controlSupplier.findSupplierById(rs.getInt("supplierId")));
+		product.setId(productId);
+		return product;		
+	}
+	
+	
+	public void updateCurrentStock(String productCode, int quantity)throws SQLException {
+		dbProduct.updateCurrentStock(productCode, quantity);
+	}
+	
+	public int getCurrentStock(Product product) {
+		int currentStock = product.getCurrentStock();
+		return currentStock;
+	}
+		
 }
