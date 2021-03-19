@@ -15,8 +15,7 @@ public class DBOrderLine{
 	
 	public OrderLine addOrderLine(OrderLine orderLine, int saleOrderId) throws SQLException {
 		String sql = String.format("insert into OrderLine (saleOrderId, quantity, productId) values (%d, %d, %d)",saleOrderId, orderLine.getQuantity(), orderLine.getProduct().getId());
-		int id = DBConnection.getInstance().executeUpdate(sql);
-		orderLine.setId(id);
+		DBConnection.getInstance().executeUpdate(sql);
 		return orderLine;
 	}
 

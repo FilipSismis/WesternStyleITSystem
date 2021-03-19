@@ -38,7 +38,7 @@ public class DBAddress {
 		String sql = String.format("select * from AdressLines where id = %d",addressId);
 		try(Statement s = DBConnection.getInstance().getConnection().createStatement()) {
 			ResultSet rs = s.executeQuery(sql);
-			address = rs.getString("addressLine_1") + rs.getString("addressLine_2");
+			address = rs.getString("addressLine_1") + " " + rs.getString("addressLine_2");
 			getZipById(rs.getInt("zipcodeId"));
 		} catch (SQLException e) {
 			e.printStackTrace();

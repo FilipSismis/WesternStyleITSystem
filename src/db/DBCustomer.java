@@ -19,7 +19,7 @@ public class DBCustomer {
 		String sql = String.format("select * from Customer where email = '%s'",customerEmail);
 		try(Statement s = DBConnection.getInstance().getConnection().createStatement()) {
 			ResultSet rs = s.executeQuery(sql);
-			customer = buildObject(rs);
+			customer = buildCustomer(rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw e;
@@ -27,7 +27,7 @@ public class DBCustomer {
 		return customer;	
 	}
 	
-	private Customer buildObject(ResultSet rs)throws SQLException {
+	private Customer buildCustomer(ResultSet rs)throws SQLException {
 		CustomerType ct = CustomerType.valueOf(rs.getString("customerType"));
 		dbAddress.getFullAddressByAddresId(rs.getInt("addressId"));
 		Customer customer = new Customer(rs.getString("fName"), rs.getString("lName"), dbAddress.getAddress(), rs.getString("phoneNo"), rs.getString("email"), dbAddress.getZip(), dbAddress.getCity(), ct);

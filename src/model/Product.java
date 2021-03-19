@@ -17,8 +17,8 @@ public class Product {
         this.supplier = supplier;
     }
     
-    public void setCurrentStock(int newCurrentStock) {
-    	this.currentStock = newCurrentStock;
+    public void setCurrentStock(int currentStock) {
+    	this.currentStock = currentStock;
     }
     
     public void setId(int id) {

@@ -9,6 +9,10 @@ import model.Product;
 
 public class DBProduct{
 
+	public DBProduct() {
+		
+	}
+	
 	public ResultSet findProductByProductId(int id) throws SQLException {
 		ResultSet rs = null;
 		String sql = String.format("select * from Product where id = %d",id);

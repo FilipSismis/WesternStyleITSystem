@@ -14,20 +14,10 @@ public class ControlProduct {
 		dbProduct = new DBProduct();
 		controlSupplier = new ControlSupplier();
 	}
-	
-	private ResultSet findProductByProductCode(String productCode)throws SQLException {
-		ResultSet rsProduct = dbProduct.findProductByProductCode(productCode);
-		return rsProduct;
-	}
-	
-	private ResultSet findProductByProductId(int productId)throws SQLException {
-		ResultSet rsProduct = dbProduct.findProductByProductId(productId);
-		return rsProduct;
-	}
-	
+		
 	public Product buildProductByProductCode(String productCode)throws SQLException{
 		Product product;
-		ResultSet rs = findProductByProductCode(productCode);
+		ResultSet rs = dbProduct.findProductByProductCode(productCode);
 		product = new Product(rs.getString("productCode"), rs.getString("pName"), rs.getInt("minStock"), rs.getInt("currentStock"), controlSupplier.findSupplierById(rs.getInt("supplierId")));
 		product.setId(rs.getInt("id"));
 		return product;		
@@ -35,7 +25,7 @@ public class ControlProduct {
 	
 	public Product buildProductByProductId(int productId)throws SQLException{
 		Product product;
-		ResultSet rs = findProductByProductId(productId);
+		ResultSet rs = dbProduct.findProductByProductId(productId);
 		product = new Product(rs.getString("productCode"), rs.getString("pName"), rs.getInt("minStock"), rs.getInt("currentStock"), controlSupplier.findSupplierById(rs.getInt("supplierId")));
 		product.setId(productId);
 		return product;		
@@ -46,7 +36,7 @@ public class ControlProduct {
 		dbProduct.updateCurrentStock(productCode, quantity);
 	}
 	
-	public int getCurrentStock(Product product) {
+	public int getProductCurrentStock(Product product) {
 		int currentStock = product.getCurrentStock();
 		return currentStock;
 	}

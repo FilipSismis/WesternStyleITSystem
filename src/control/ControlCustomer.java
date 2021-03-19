@@ -8,7 +8,7 @@ public class ControlCustomer {
 
 	private DBCustomer dbCustomer;
 
-	public void ControlCustomer() {
+	public ControlCustomer() {
 		dbCustomer = new DBCustomer();
 	}
 	

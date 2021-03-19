@@ -46,7 +46,7 @@ public class SaleOrder {
 		return this.deliveryDate;
 	}
 	
-	public LocalDateTime getDate() {
+	public LocalDateTime getSaleDateTime() {
 		return this.saleDateTime;
 	}
 	

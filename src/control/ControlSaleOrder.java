@@ -32,17 +32,15 @@ public class ControlSaleOrder {
 		dbSaleOrder.addSaleOrder(saleOrder);
 	}
 	
-	public int addProduct(String productCode, int quantity)throws SQLException {
+	public void addProduct(String productCode, int quantity)throws SQLException {
 		Product product = controlProduct.buildProductByProductCode(productCode);
-		int currentStock = controlProduct.getCurrentStock(product);
+		int currentStock = controlProduct.getProductCurrentStock(product);
 		if(currentStock >= quantity) {
 			OrderLine orderLine = new OrderLine(quantity, product);
 			dbOrderLine.addOrderLine(orderLine, saleOrder.getId());
 			controlProduct.updateCurrentStock(product.getProductCode(), quantity);
-			return 1;
 		}else {
 			//incorrect amount requested to be added into orderLine
-			return 0;
 		}
 	}
 	
